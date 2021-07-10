@@ -197,7 +197,11 @@ To Build
 
    go build github.com/jonnyGit81/gofirstapp
 
+This will generated a binary file into you root project
 
+To be able to generate in bin folder use go install instead
+
+   go install github.com/jonnyGit81/gofirstapp
 
 === Configure InteliJ Ultimate
 
