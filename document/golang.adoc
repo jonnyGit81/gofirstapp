@@ -1,0 +1,228 @@
+:internal:
+= Go Lang Starter
+:toc: left
+:author: Jonny
+:revnumber!: 1.0.0
+:revdate: Saturday, 10 February, 2021
+:doctype:   article
+:encoding:  utf-8
+:lang:      en
+:toc:       left
+:toclevels: 20
+:toc-title: Table of Content
+:sectnums:
+:last-update-label:
+:nofooter!:
+:media: print
+:icons: font
+:pagenums:
+:imagesdir: image/
+:numbered:
+:toc: left
+:xrefstyle: full
+
+== Golang
+
+image:1.jpeg[]
+
+https://golang.org[Golang]
+
+https://play.golang.org[Golang Play Ground]
+
+
+
+== Setup Development Environment For Mac
+
+
+=== Install Golang
+
+
+Download the tar.gz file
+
+Extract the downloaded file and move into /usr/local/go
+
+    sudo mkdir /usr/local/go
+    tar -xvf go1.16.linux-amd64.tar.gz
+    sudo mv go /usr/local
+
+image:2.jpeg[]
+
+image:3.jpeg[]
+
+==== Environment Setting
+
+- GOROOT
+
+  Beware setting GOROOT has been shown to cause problem as you move through differetn versions Go.
+  Especially if you have got multiple version of the language on your system.
+
+  you can follow this link for setup.
+  https://dave.cheney.net/2013/06/14/you-dont-need-to-set-goroot-really
+
+  If you able to install the go instalation at its default localtion /usr/local/go
+
+  if you able to do that, then please avoid to setup any GOROOT.
+
+  We only need to setup the path variable to GOROOT bin directory.
+
+  but in case you really need to set follow this :
+
+open your bashprofile
+
+  export GOROOT=/usr/local/go
+  export PATH=$PATH:$GOROOT/bin
+
+Above we tell where is the environment is installed
+
+We also will downloading a lot of packages while on development (this is same as .m2 folder)
+
+GOPATH is your development project, but by setting this is kind like a monolithic development.
+refer to other way to setup this, for now just use GOPATH
+
+   mkdir /Users/jonny/GOLANG/golib
+
+   export GOPATH=/Users/jonny/GOLANG/golib
+   export PATH=$PATH:$GOPATH/bin
+
+to use example:
+
+Get GO Auto Complete Code.
+
+   go get github.com/nsf/gocode
+
+this will download the source code of library into /Users/jonny/GOLANG/golib
+
+ /Users/jonny/GOLANG/golib
+ ls -l
+
+  drwxr-xr-x  3 jonny  staff   96 Jul 10 14:53 bin
+  drwxr-xr-x  4 jonny  staff  128 Jul 10 14:52 pkg
+
+The downloaded source code will in folder :
+
+    gocode@v0.0.0-20190302080247-5bee97b48836 jonny$ pwd
+
+    /Users/jonny/GOLANG/golib/pkg/mod/github.com/nsf/gocode@v0.0.0-20190302080247-5bee97b48836
+
+    ls -l
+
+    total 520
+    -r--r--r--   1 jonny  staff   1073 Jul 10 14:52 LICENSE
+    -r--r--r--   1 jonny  staff  10070 Jul 10 14:52 README.md
+    dr-xr-xr-x   3 jonny  staff     96 Jul 10 14:52 _gccgo
+    dr-xr-xr-x   3 jonny  staff     96 Jul 10 14:52 _goremote
+    dr-xr-xr-x  71 jonny  staff   2272 Jul 10 14:52 _testing
+    -r--r--r--   1 jonny  staff  20869 Jul 10 14:52 autocompletecontext.go
+    -r--r--r--   1 jonny  staff   9896 Jul 10 14:52 autocompletefile.go
+    -r--r--r--   1 jonny  staff   3683 Jul 10 14:52 client.go
+    -r--r--r--   1 jonny  staff   7807 Jul 10 14:52 config.go
+    -r--r--r--   1 jonny  staff  16923 Jul 10 14:52 cursorcontext.go
+    dr-xr-xr-x  10 jonny  staff    320 Jul 10 14:52 debian
+    -r--r--r--   1 jonny  staff  33687 Jul 10 14:52 decl.go
+    -r--r--r--   1 jonny  staff  14870 Jul 10 14:52 declcache.go
+    dr-xr-xr-x   4 jonny  staff    128 Jul 10 14:52 docs
+    dr-xr-xr-x   3 jonny  staff     96 Jul 10 14:52 emacs
+    dr-xr-xr-x   4 jonny  staff    128 Jul 10 14:52 emacs-company
+    -r--r--r--   1 jonny  staff   4905 Jul 10 14:52 formatters.go
+    -r--r--r--   1 jonny  staff   2369 Jul 10 14:52 gocode.go
+    dr-xr-xr-x   7 jonny  staff    224 Jul 10 14:52 nvim
+    -r--r--r--   1 jonny  staff    863 Jul 10 14:52 os_posix.go
+    -r--r--r--   1 jonny  staff   1331 Jul 10 14:52 os_windows.go
+    -r--r--r--   1 jonny  staff   5952 Jul 10 14:52 package.go
+    -r--r--r--   1 jonny  staff  19702 Jul 10 14:52 package_bin.go
+    -r--r--r--   1 jonny  staff  14906 Jul 10 14:52 package_ibin.go
+    -r--r--r--   1 jonny  staff  16424 Jul 10 14:52 package_text.go
+    -r--r--r--   1 jonny  staff    115 Jul 10 14:52 pre_go17.go
+    -r--r--r--   1 jonny  staff   2849 Jul 10 14:52 ripper.go
+    -r--r--r--   1 jonny  staff   3245 Jul 10 14:52 rpc.go
+    -r--r--r--   1 jonny  staff   1510 Jul 10 14:52 scope.go
+    -r--r--r--   1 jonny  staff   6195 Jul 10 14:52 server.go
+    dr-xr-xr-x   5 jonny  staff    160 Jul 10 14:52 subl3
+    -r--r--r--   1 jonny  staff    264 Jul 10 14:52 type_alias_build_hack_18.go
+    -r--r--r--   1 jonny  staff    287 Jul 10 14:52 type_alias_build_hack_19.go
+    -r--r--r--   1 jonny  staff   6985 Jul 10 14:52 utils.go
+    dr-xr-xr-x   7 jonny  staff    224 Jul 10 14:52 vim
+
+*The problem with this GOPATH approach is tends to drive toward monolithic repository*
+
+*Which all libraries, you code will all pun into this directory.*
+
+*To Solve this*
+
+open the bash_profile
+
+We need to create a compound GoPath, to separate from our code and the library we wanted to use
+
+this is our workspace locaction
+
+    mkdir /Users/jonny/GOLANG/code/src
+    mkdir /Users/jonny/GOLANG/code/bin
+    mkdir /Users/jonny/GOLANG/code/pkg
+
+    export GOPATH=$GOPATH:/Users/jonny/GOLANG/code
+
+*COMPLETE SETUP ENVI*
+
+[source,shell]
+----
+#GOLANG
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+#Depedencies library
+export GOPATH=/Users/jonny/GOLANG/golib
+export PATH=$PATH:$GOPATH/bin
+
+#OUR WORKSPACE, REMEMBER at code folder need to have src, bin, pkg directory
+export GOPATH=$GOPATH:/Users/jonny/GOLANG/code
+----
+
+
+=== Configure VS CODE
+
+    cd /code
+    code .
+
+search plugin go by Go Team at Google
+
+under src folder create your repository folder and the project name
+
+image:4.jpeg[]
+
+To RUN
+
+    go run src/github.com/jonnyGit81/gofirstapp/Main.go
+
+To Build
+
+   go build github.com/jonnyGit81/gofirstapp
+
+
+
+=== Configure InteliJ Ultimate
+
+Search for plugins :
+
+- Go Language
+- Go Template
+
+- Install File Watchers
+
+File Watchers is a plugin that allows you to automatically run a command when you change or save a file. This is used to run linters in the IDE.
+
+https://betterprogramming.pub/how-to-improve-code-quality-with-an-automatic-check-in-go-d18a5eb85f09
+
+
+- Enabling Go mod
+
+At the root of the project type :
+
+  go mod init
+  go mod tidy
+
+
+- ENABLE DEBUG
+
+image:5.jpeg[]
+
+image:6.jpeg[]
